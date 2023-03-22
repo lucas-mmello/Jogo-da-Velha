@@ -23,12 +23,19 @@ const ganhar = [
 const comecar = document.getElementById("comecar");
 
 comecar.addEventListener("click", function () {
+  jogador1 = document.getElementById("jogador1").value;
+  jogador2 = document.getElementById("jogador2").value;
   if (jogador1 !== "" && jogador2 !== "") {
     document.querySelectorAll(".charKey").forEach(function (key) {
       key.disabled = false;
     });
+    jogadorDaVez = jogador1;
     document.getElementById("vezJogador").value = `${jogadorDaVez} é a sua vez`;
     comecar.setAttribute("disabled", "");
+    jogador1Input.setAttribute("disabled", "");
+
+    jogador2Input.setAttribute("disabled", "");
+    console.log(jogador1);
   }
 });
 
@@ -74,21 +81,6 @@ document.querySelectorAll(".charKey").forEach(function (charKeyBtn) {
       }
     }
   });
-});
-
-jogador1Input.addEventListener("keydown", function (ev) {
-  if (ev.key === "Enter") {
-    jogador1 = jogador1Input.value;
-    jogador1Input.setAttribute("disabled", "");
-    jogadorDaVez = jogador1;
-  }
-});
-
-jogador2Input.addEventListener("keydown", function (ev) {
-  if (ev.key === "Enter") {
-    jogador2 = jogador2Input.value;
-    jogador2Input.setAttribute("disabled", "");
-  }
 });
 
 function verificar1(first, last) {
